@@ -1,13 +1,13 @@
 <?php
 
-require("./connect.php");
+require("conn.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $data=json_decode(file_get_contents("php://input"),true);
     // $id=$data['id'];
 
     $response=array();
-    $query="SELECT * FROM `users`";
+    $query="SELECT * FROM `user`";
     $result=$conn->query($query);
     if($result->num_rows > 0){
             while($row=$result->fetch_assoc()){
@@ -15,12 +15,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             
             }
       
-            // $response['message']="lOGGED IN SUCCESSFULLY";
-    }
-    // else{
-    //     $response['message']="Email Or Password  Not Valid";
-    // }
-    echo json_encode($response);
+
+            echo json_encode($response);
 }
 $conn->close();
 
