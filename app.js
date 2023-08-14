@@ -25,7 +25,7 @@ if(flag==0){
         alert("Error:",error);
     })
 }else {
-    fetch("readSuperAdmin.php",{
+    fetch("readSuper.php",{
         method: "POST",
         headers:{
             "Content-Type":"Application/json",
