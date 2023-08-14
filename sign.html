@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css"></head>
+</head>
+<body>
+    <h2>Sign up</h2>
+    <p>Create an Account Free</p>
+
+    <form id="registrationForm">
+        <input type="text" id="fName" name="fname" placeholder="First Name" required>
+        <p id="fNameP" class="invalid">
+            <b>letters</b> Only (3 leters minimum)
+          </p>
+        <input type="text" id="mName" name="mname" placeholder="Middle Name" required>
+        <p id="mNameP" class="invalid">
+            <b>letters</b> Only (3 leters minimum)
+          </p>
+        <input type="text" id="lName" name="lname" placeholder="Last Name" required>
+        <p id="lNameP" class="invalid">
+            <b>letters</b> Only (3 leters minimum)
+          </p>
+        <input type="text" id="familyName" name="familyname" placeholder="Family Name" required><br>
+        <p id="familyNameP" class="invalid">
+            <b>letters</b> Only (3 leters minimum)
+          </p>
+        <input type="text" id="email" name="email" placeholder="Email" required><br>
+        <p id="emailP" class="invalid"><b>example@mail.com</b></p>
+        <input type="text" id="mobile" name="mobile" placeholder="Mobile " required><br>
+        <p id="mobileP" class="invalid"><b>14 digits</b></p>
+        <input type="text" id="Password" name="Password"  placeholder="Password " required><br>
+        <p id="capitalPass" class="invalid">
+            <b>Uppercase</b> letter </p>
+            <p id="letterPass" class="invalid"><b>lowercase</b> letter</p>
+            <p id="numberPass" class="invalid"><b>number</b></p>
+            <p id="lengthPass" class="invalid"><b>(8-32) characters</b></p>
+        <input type="text" id="conpassword" name="conpassword" placeholder="Confirm Password" required><br>
+        <p id="confPassP" class="invalid">
+            <b>Must Match with Password</b>
+          </p>
+        <input type="date" id="birth" name="birth" placeholder="Date of Birth" required><br>
+        <p id="birthP" class="invalid">
+            <b>Age above 16 years</b>
+        </p>
+        <input type="submit" id="signsubmit" value="Sign Up">
+
+    </form>
+</body>
+</html>
