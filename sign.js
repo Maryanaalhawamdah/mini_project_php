@@ -212,6 +212,9 @@ mobile.addEventListener("keyup",function(){
         document.getElementById("mobile").classList.add("invalid");
     }
 })
+
+//Birth field
+
 if(firstNameFlag && middleNameFlag && lastNameFlag &&familyNameFlag &&emailFlag  && passwordFlag && confPasswordFlag && mobileFlag ){
     event.preventDefault();
 

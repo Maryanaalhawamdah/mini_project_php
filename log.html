@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="main.css"></head>
+    <link rel="stylesheet" href="login.css"></head>
 </head>
 <body>
     <h2>Log in </h2>
-    <p>Please Enter your email to log in</p>
-
-    <form id="logForm">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
-        <label for="Password">Password:</label>
-        <input type="text" id="Password" name="Password" required><br>
-        <input type="submit" id ="logsubmit" value="log In">
-
-    </form>
+    <h3>Please Enter your email to log in</h3>
+<br>
+    <div class="login-section">
+       
+        <div class="form-login">
+          <form id="loginForm">
+            <label for="email">Email</label><br />
+            <input class="input-login" type="email" id="email" /><br />
+            <p id="emailP" class="invalid"><b>Not Found Email</b></p>
+            <br />
+            <label for="password">Password</label><br />
+            <input class="input-login" type="password" id="password" /><br />
+            <p id="passwordP" class="invalid"><b>Incorect Password </b></p>
+            <button id="signInId" type="submit" value="submit"><span>Sign In</span></button>
+            <p></p>
+          </form>
+        </div>
+      </div>
+  </div>
+      <script src="./login.js"></script>
 </body>
 </html>
