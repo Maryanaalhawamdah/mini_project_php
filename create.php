@@ -4,14 +4,14 @@ require("conn.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
 
-    $userFname = $data['fname'];
-    $userMname = $data['mname'];
-    $userLname = $data['lname'];
-    $userFamilyname = $data['familyname'];
+    $userFname = $data['fName'];
+    $userMname = $data['mName'];
+    $userLname = $data['lName'];
+    $userFamilyname = $data['familyName'];
     $userEmail = $data['email'];
-    $userPassword = $data['password'];
+    $userPassword = $data['Password'];
     $userMobile = $data['mobile'];
-    $userBirth = $data['birth'];
+    $userBirth = $data['bdate'];
 
     $sql = "INSERT INTO user (`fname`, `mname`, `lname`, `familyname`, `email`, `password`, `mobile`, `birth`) 
             VALUES ('$userFname', '$userMname', '$userLname', '$userFamilyname', '$userEmail', '$userPassword', '$userMobile', '$userBirth')";

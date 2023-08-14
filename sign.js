@@ -264,21 +264,21 @@ if(firstNameFlag && middleNameFlag && lastNameFlag &&familyNameFlag &&emailFlag 
 document.getElementById("registrationForm").addEventListener("submit",function(e){
 e.preventDefault();
 
-var fname = document.getElementById("fname").value;
-var mname = document.getElementById("mname").value;
-var lname = document.getElementById("lname").value;
-var familyname = document.getElementById("familyname").value;
+var fname = document.getElementById("fName").value;
+var mname = document.getElementById("mName").value;
+var lname = document.getElementById("lName").value;
+var familyname = document.getElementById("familyName").value;
 var email = document.getElementById("email").value;
 var password = document.getElementById("Password").value;
 var mobile = document.getElementById("mobile").value;
-var birth = document.getElementById("birth").value;
+var birth = document.getElementById("bdate").value;
 
 fetch("create.php",{
     method: "POST",
     headers:{
-        "Content-Type":"Application/json",
+        "Content-Type":"application/json",
     },
-    body:JSON.stringify({fname:fname,
+    body:JSON.stringify({'fname':fname,
         mname:mname,
         lname:lname,
         familyname:familyname,
@@ -287,21 +287,25 @@ fetch("create.php",{
         mobile:mobile,
         birth:birth}),
 })
-.then(response=>response.json())
+.then(response => response.json())
 .then(data=>{
-    alert(data.message);
-    document.getElementById("fname").value="";
-    document.getElementById("mname").value="";
-    document.getElementById("lname").value="";
-    document.getElementById("familyname").value="";
+    if(data.message=="Email Not Valid"){
+        document.getElementById("notValidP").textContent="Email Not Valid";
+        document.getElementById("notValidP").style.display="block";
+        }else{
+    document.getElementById("fName").value="";
+    document.getElementById("mName").value="";
+    document.getElementById("lName").value="";
+    document.getElementById("familyName").value="";
     document.getElementById("email").value="";
     document.getElementById("Password").value="";
     document.getElementById("mobile").value="";
     document.getElementById("birth").value="";
+    window.location.href='log.html';
+        }
+})
+.catch(error => {
+    console.error("Error:", error);
+})
 
 })
-.catch(error=>{
-    console.error("Error:",error);
-})
-})
-// fetchUsers();

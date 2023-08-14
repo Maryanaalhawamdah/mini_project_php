@@ -1,43 +1,41 @@
-let signInBtn=document.getElementById("signInId");
-let emailField=document.getElementById("email");
-let passwordField=document.getElementById("password");
 
-//email field
-emailField.addEventListener("focus",function(){
-    document.getElementById("emailP").style.display="none";
-})
-
-
-//password field
-passwordField.addEventListener("focus",function(){
-    document.getElementById("passwordP").style.display="none";
-})
-
-//login button field
-function fetchUsers(){
-
-    fetch("read.php")
-    .then(response=>response.json())
-    .then(data=>{
-        console.log(data);
-    })
-}
-
-//Event Listener for form submission
-document.getElementById("loginForm").addEventListener("submit",function(e){
-    e.preventDefault();
- var email = document.getElementById("email").value;
- var password = document.getElementById("password").value;
-
-    
+ let email=document.getElementById("email");
+ let password=document.getElementById("password");
+ let btn=document.getElementById("signInId");
+ let date=new Date();
+ btn.addEventListener("click",function(event){
+     event.preventDefault();
+     fetch("check.php",{
+         method: "POST",
+         headers:{
+             "Content-Type":"Application/json",
+         },
+         body:JSON.stringify({
+         'email' : email.value,
+         'password' : password.value,
+         'date':date,
+     }),
+     })
+     .then(response=>response.json())
+     .then(data=>{
+         if(data['message']=="lOGGED IN SUCCESSFULLY"){
+             localStorage.setItem('id',data.user['id']);
+             localStorage.setItem('fname',data.user['fName'])
+             localStorage.setItem('superUser',data.user['superUser'])
+             window.location.href='./welcome.html';
+         }else{
+             document.getElementById("invalidP").textContent=data['message'];
+         }
+         })
+     .catch(error=>{
+         alert("Error:",error);
+     })
+ }) 
+   
    
     
     
     
-    
-    
-    
-    let i=0;
     for(i=0;i<user.length;i++){
 
         if(user[i]["email"]==emailField.value && user[i]["password"]==passwordField.value){
@@ -60,4 +58,3 @@ document.getElementById("loginForm").addEventListener("submit",function(e){
         console.log("error email");
     }
     
-})
