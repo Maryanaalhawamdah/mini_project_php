@@ -44,9 +44,9 @@ body{
     border-radius: 5px;
     /* text-align: center; */
     background-color: #f0db90;
-    font-size: 15px;
+    font-size: 10px;
     color: #020201;
-    font-weight: bold;
+    /* font-weight: bold; */
   }
   
   input::placeholder {
@@ -62,20 +62,20 @@ body{
   .valid {
     color: green;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 
   }
   
   .valid:before {
     content: "✔ ";
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
   }
   
   .invalid {
     color: red;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
   }
     
   .invalid:before {

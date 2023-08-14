@@ -8,11 +8,13 @@ let confEmailFlag=0;
 let passwordFlag=0;
 let confPasswordFlag=0
 let mobileFlag=0;
-let birthFlag=0;
+let bdateFlag=0;
 
 let up=0;
 let lw=0;
 let nm=0;
+let sp=0;
+let sc=0;
 let lg=0;
 
 
@@ -80,20 +82,20 @@ lastName.addEventListener("keyup",function(){
 //Family name field
 let familyName=document.getElementById("familyName");
 familyName.addEventListener("focus",function(){
-    document.getElementById("familyName").style.display="block";
+    document.getElementById("familyNameP").style.display="block";
 })
 familyName.addEventListener("blur",function(){
-    document.getElementById("familyName").style.display="none";
+    document.getElementById("familyNameP").style.display="none";
 })
 familyName.addEventListener("keyup",function(){
     let familyNameRE=/[a-zA-Z]{3,}/g;
     if(familyName.value.match(familyNameRE)==familyName.value){
-        document.getElementById("familyName").classList.remove("invalid");
-        document.getElementById("familyName").classList.add("valid");
+        document.getElementById("familyNameP").classList.remove("invalid");
+        document.getElementById("familyNameP").classList.add("valid");
         familyNameFlag=1;
     }else{
-        document.getElementById("familyName").classList.remove("valid");
-        document.getElementById("familyName").classList.add("invalid");
+        document.getElementById("familyNameP").classList.remove("valid");
+        document.getElementById("familyNameP").classList.add("invalid");
     }
 })
 //Email field
@@ -125,6 +127,12 @@ password.addEventListener("focus",function(){
     document.getElementById("numberPass").style.display="block";
     document.getElementById("lengthPass").style.display="block";
 
+})
+password.addEventListener("blur",function(){
+    document.getElementById("capitalPass").style.display="none";
+    document.getElementById("letterPass").style.display="none";
+    document.getElementById("numberPass").style.display="none";
+    document.getElementById("lengthPass").style.display="none";
 })
 
 password.addEventListener("keyup",function(){
@@ -200,18 +208,41 @@ mobile.addEventListener("blur",function(){
 mobile.addEventListener("keyup",function(){
     let mobileRE=/[0-9]{14}/;
     if(mobile.value.match(mobileRE)==mobile.value){
-        document.getElementById("mobile").classList.remove("invalid");
-        document.getElementById("mobile").classList.add("valid");
+        document.getElementById("mobileP").classList.remove("invalid");
+        document.getElementById("mobileP").classList.add("valid");
         mobileFlag=1;
     }else{
-        document.getElementById("mobile").classList.remove("valid");
-        document.getElementById("mobile").classList.add("invalid");
+        document.getElementById("mobileP").classList.remove("valid");
+        document.getElementById("mobileP").classList.add("invalid");
     }
 })
 
 //Birth field
+let bdate=document.getElementById("bdate");
+bdate.addEventListener("blur",function(){
+    document.getElementById("dateP").style.display='none';
+});
+bdate.addEventListener("change",function(){
+    let birthDate=document.getElementById("bdate").value;
+    birthDate=new Date(birthDate);//convert from string to obj
+    totalAge=Date.now()-birthDate.getTime();//mill second
+    console.log(typeof(totalAge/1000/60/60/24));
+    ageyear=new Date (totalAge);//convert millsecond to date start from 1970
+    ageyear=Math.abs(ageyear.getUTCFullYear()-1970);
+    // console.log(ageyear);
+    if(ageyear<16){
+        document.getElementById("dateP").style.display='block';
+        dateP.classList.remove("valid");
+        dateP.classList.add("invalid");
+    }else{
+        document.getElementById("dateP").style.display='block';
+        dateP.classList.remove("invalid");
+        dateP.classList.add("valid");
+        bdateFlag=1;
+    }
+})
 
-if(firstNameFlag && middleNameFlag && lastNameFlag &&familyNameFlag &&emailFlag  && passwordFlag && confPasswordFlag && mobileFlag ){
+if(firstNameFlag && middleNameFlag && lastNameFlag &&familyNameFlag &&emailFlag  && passwordFlag && confPasswordFlag && mobileFlag &&bdateFlag){
     event.preventDefault();
 
 }
@@ -238,7 +269,7 @@ var mname = document.getElementById("mname").value;
 var lname = document.getElementById("lname").value;
 var familyname = document.getElementById("familyname").value;
 var email = document.getElementById("email").value;
-var password = document.getElementById("password").value;
+var password = document.getElementById("Password").value;
 var mobile = document.getElementById("mobile").value;
 var birth = document.getElementById("birth").value;
 
@@ -264,7 +295,7 @@ fetch("create.php",{
     document.getElementById("lname").value="";
     document.getElementById("familyname").value="";
     document.getElementById("email").value="";
-    document.getElementById("password").value="";
+    document.getElementById("Password").value="";
     document.getElementById("mobile").value="";
     document.getElementById("birth").value="";
 
