@@ -46,16 +46,16 @@ document.getElementById("loginForm").addEventListener("submit",function(e){
             document.getElementById("passwordP").style.display="none";
             window.location.href="result.html";
         ;}
-        if(user[i]["email"]==emailField.value && users[i]["password"]!=passwordField.value){
+        if(user[i]["email"]==emailField.value && user[i]["password"]!=passwordField.value){
             document.getElementById("emailP").style.display="none";
             document.getElementById("passwordP").style.display="block";
-            document.getElementById("passwordP").classListadd("invalid");
+            document.getElementById("passwordP").classList.add("invalid");
             console.log("error pass");
             break;}
     }
     if(i==user.length){
         document.getElementById("emailP").style.display="block";
-        document.getElementById("emailP").classListadd("invalid");
+        document.getElementById("emailP").classList.add("invalid");
         document.getElementById("passwordP").style.display="none";
         console.log("error email");
     }

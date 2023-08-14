@@ -56,24 +56,30 @@ body{
   }
   p {
     display: none;
+    
   }
   
   .valid {
     color: green;
     text-align: center;
+    font-size: 30px;
+
   }
   
   .valid:before {
     content: "✔ ";
     text-align: center;
+    font-size: 30px;
   }
   
   .invalid {
     color: red;
     text-align: center;
+    font-size: 30px;
   }
     
   .invalid:before {
     content: "✖ ";
     text-align: center;
+    font-size: 30px;
   }

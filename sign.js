@@ -118,19 +118,15 @@ email.addEventListener("keyup",function(){
 
 })
 //Password field
-let password=document.getElementById("password");
+let password=document.getElementById("Password");
 password.addEventListener("focus",function(){
-        document.getElementById("capitalPass").style.display="block";
-        document.getElementById("letterPass").style.display="block";
-        document.getElementById("numberPass").style.display="block";
-        document.getElementById("lengthPass").style.display="block";
+    document.getElementById("capitalPass").style.display="block";
+    document.getElementById("letterPass").style.display="block";
+    document.getElementById("numberPass").style.display="block";
+    document.getElementById("lengthPass").style.display="block";
+
 })
-password.addEventListener("blur",function(){
-        document.getElementById("capitalPass").style.display="none";
-        document.getElementById("letterPass").style.display="none";
-        document.getElementById("numberPass").style.display="none";
-        document.getElementById("lengthPass").style.display="none";
-})
+
 password.addEventListener("keyup",function(){
     // let passwordRE=/(^[A-Z])(?=.*\d)(?=.*[a-z]).{8,32}/g;
     
@@ -221,14 +217,14 @@ if(firstNameFlag && middleNameFlag && lastNameFlag &&familyNameFlag &&emailFlag 
 }
 
 
-function fetchUsers(){
+// function fetchUsers(){
 
-    fetch("read.php")
-    .then(response=>response.json())
-    .then(data=>{
-        console.log(data);
-    })
-}
+//     fetch("read.php")
+//     .then(response=>response.json())
+//     .then(data=>{
+//         console.log(data);
+//     })
+// }
 
 
 
@@ -251,7 +247,14 @@ fetch("create.php",{
     headers:{
         "Content-Type":"Application/json",
     },
-    body:JSON.stringify({fname:fname,mname:mname,lname:lname,familyname:familyname,email:email,password:password,mobile:mobile,birth:birth}),
+    body:JSON.stringify({fname:fname,
+        mname:mname,
+        lname:lname,
+        familyname:familyname,
+        email:email,
+        password:password,
+        mobile:mobile,
+        birth:birth}),
 })
 .then(response=>response.json())
 .then(data=>{
@@ -270,4 +273,4 @@ fetch("create.php",{
     console.error("Error:",error);
 })
 })
-fetchUser();
+// fetchUsers();
