@@ -278,7 +278,7 @@ fetch("create.php",{
     headers:{
         "Content-Type":"application/json",
     },
-    body:JSON.stringify({'fname':fname,
+    body:JSON.stringify({fname:fname,
         mname:mname,
         lname:lname,
         familyname:familyname,
@@ -300,8 +300,9 @@ fetch("create.php",{
     document.getElementById("email").value="";
     document.getElementById("Password").value="";
     document.getElementById("mobile").value="";
-    document.getElementById("birth").value="";
-    window.location.href='log.html';
+    document.getElementById("bdate").value="";
+
+   window.location.href="log.html";
         }
 })
 .catch(error => {
