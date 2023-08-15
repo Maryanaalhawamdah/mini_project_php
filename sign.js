@@ -305,6 +305,7 @@ fetch("create.php",{
    window.location.href="log.html";
         }
 })
+
 .catch(error => {
     console.error("Error:", error);
 })

@@ -5,7 +5,7 @@
  let date=new Date();
  btn.addEventListener("click",function(event){
      event.preventDefault();
-     fetch("check.php",{
+     fetch("read.php",{
          method: "POST",
          headers:{
              "Content-Type":"Application/json",
@@ -22,7 +22,29 @@
              localStorage.setItem('id',data.user['id']);
              localStorage.setItem('fname',data.user['fName'])
              localStorage.setItem('superUser',data.user['superUser'])
-             window.location.href='./welcome.html';
+             
+    for(i=0;i<data.user.length;i++){
+
+        if(data.user[i]["email"]==emailField.value && data.user[i]["password"]==passwordField.value){
+            // alert("Welcome "+ users[i]["firstName"] + "!!");
+            document.getElementById("emailP").style.display="none";
+            document.getElementById("passwordP").style.display="none";
+            window.location.href="result.html";
+        ;}
+        if(data.user[i]["email"]==emailField.value && data.user[i]["password"]!=passwordField.value){
+            document.getElementById("emailP").style.display="none";
+            document.getElementById("passwordP").style.display="block";
+            document.getElementById("passwordP").classList.add("invalid");
+            console.log("error pass");
+            break;}
+    }
+    if(i==data.user.length){
+        document.getElementById("emailP").style.display="block";
+        document.getElementById("emailP").classList.add("invalid");
+        document.getElementById("passwordP").style.display="none";
+        console.log("error email");
+    }
+             window.location.href='result.html';
          }else{
              document.getElementById("invalidP").textContent=data['message'];
          }
@@ -36,25 +58,4 @@
     
     
     
-    for(i=0;i<user.length;i++){
-
-        if(user[i]["email"]==emailField.value && user[i]["password"]==passwordField.value){
-            // alert("Welcome "+ users[i]["firstName"] + "!!");
-            document.getElementById("emailP").style.display="none";
-            document.getElementById("passwordP").style.display="none";
-            window.location.href="result.html";
-        ;}
-        if(user[i]["email"]==emailField.value && user[i]["password"]!=passwordField.value){
-            document.getElementById("emailP").style.display="none";
-            document.getElementById("passwordP").style.display="block";
-            document.getElementById("passwordP").classList.add("invalid");
-            console.log("error pass");
-            break;}
-    }
-    if(i==user.length){
-        document.getElementById("emailP").style.display="block";
-        document.getElementById("emailP").classList.add("invalid");
-        document.getElementById("passwordP").style.display="none";
-        console.log("error email");
-    }
     
