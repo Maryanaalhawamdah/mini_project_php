@@ -8,7 +8,7 @@
      fetch("read.php",{
          method: "POST",
          headers:{
-             "Content-Type":"Application/json",
+             "Content-Type":"application/json",
          },
          body:JSON.stringify({
          'email' : email.value,
@@ -44,7 +44,7 @@
         document.getElementById("passwordP").style.display="none";
         console.log("error email");
     }
-             window.location.href='result.html';
+             window.location.href="result.html";
          }else{
              document.getElementById("invalidP").textContent=data['message'];
          }
