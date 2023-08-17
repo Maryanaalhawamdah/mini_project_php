@@ -50,7 +50,7 @@
          }
          })
      .catch(error=>{
-         alert("Error:",error);
+        window.location.href="result.html";
      })
  }) 
    

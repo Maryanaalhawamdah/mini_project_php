@@ -1,6 +1,6 @@
 let fname=localStorage.getItem('fname');
 let id=localStorage.getItem('id');
-let flag=localStorage.getItem('superUserFlag');
+let flag=localStorage.getItem('superUser');
 document.querySelector('h1').textContent="Welcome "+fname;
 let superDiv=document.getElementById("superUserDiv");
 let table=document.getElementById("tbl");
@@ -17,7 +17,7 @@ if(flag==0){
     .then(response=>response.json())
     .then(data=>{
         document.getElementById("userdiv").style.display='block';
-        document.getElementById("nameP").textContent="Full Name : " + data.user['fName'] + " " + data.user['mName'] + " " + data.user['ltName'] + " " + data.user['familyName'];
+        document.getElementById("nameP").textContent="Full Name : " + data.user['fname'] + " " + data.user['mname'] + " " + data.user['lname'] + " " + data.user['familyname'];
         document.getElementById("emailP").textContent="Email : " + data.user['email'];
         document.getElementById("mobileP").textContent="Mobile : +" + data.user['mobile'];
         })
